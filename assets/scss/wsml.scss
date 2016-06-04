@@ -1,0 +1,72 @@
+.wrap-fullscreen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background: #fff;
+  margin: 0;
+  z-index: 999999999;
+}
+
+.stock-table {
+  font-size: 13px;
+  width: 100%;
+  
+  
+  th.sku, td.sku, th.status, td.status {
+    width: 75px;
+  }
+  
+  th.price, td.price {
+    width: 15%;
+    max-width: 160px;
+  }
+  th.stock, th.stock {
+    width: 10%;
+    max-width: 120px;
+  }
+  th.image, td.image {
+    width: 75px;
+    
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  td.product_name {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    
+    a {
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+  
+  .input-group {
+    font-size: 13px;
+    input.form-control {
+      font-size: 13px;
+    }
+    .input-group-addon {
+      font-weight: 600;
+      font-size: 13px;
+    }
+  }
+  
+  p.excerpt {
+    font-size: 12px;
+    color: #aaa;
+    margin: 4px 0 0 0;
+    font-weight: 400;
+    text-transform: none;
+  }
+  
+  .label {
+    text-transform: uppercase;
+  }
+}
