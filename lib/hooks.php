@@ -103,9 +103,15 @@ function wsml_update_product_by_field($ID,$field,$value) {
   switch ( $field ) {
     case "regular_price":
       $meta_key = "_regular_price";
+      if ( $value == 0 ) {
+        $value = ""
+      }
       break;
     case "sale_price":
       $meta_key = "_sale_price";
+      if ( $value == 0 ) {
+        $value = ""
+      }
       break;
     case "stock":
       $meta_key = "_stock";
