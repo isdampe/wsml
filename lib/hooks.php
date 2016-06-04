@@ -123,6 +123,10 @@ function wsml_update_product_by_field($ID,$field,$value) {
   //Get meta.
   $reg = (int)get_post_meta($ID,'_regular_price',true);
   $sale = (int)get_post_meta($ID,'_sale_price',true);
+  
+  if ( $reg == 0 ) $reg = "";
+  if ( $sale == 0 ) $sale = "";
+  
   if ( $sale > 0 ) {
     update_post_meta($ID,'_price', $sale);
   } else {
