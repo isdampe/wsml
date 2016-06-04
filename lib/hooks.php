@@ -104,13 +104,13 @@ function wsml_update_product_by_field($ID,$field,$value) {
     case "regular_price":
       $meta_key = "_regular_price";
       if ( $value == 0 ) {
-        $value = ""
+        $value = "";
       }
       break;
     case "sale_price":
       $meta_key = "_sale_price";
       if ( $value == 0 ) {
-        $value = ""
+        $value = "";
       }
       break;
     case "stock":
