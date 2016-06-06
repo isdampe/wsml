@@ -3,8 +3,9 @@
   <?php if ( $wsml['fullscreen'] !== true ) { ?>
   <h2>Stock manager</h2>
   <?php } ?>
+  <input type="text" class="form-control" data-filter="stock" id="stock-filer" placeholder="Search for product" value="" />
   
-  <table class="table table-striped table-hover stock-table">
+  <table class="table table-striped table-hover stock-table" id="stock-table">
     <thead>
       <tr>
         <th class="image">Image</th>
@@ -77,3 +78,6 @@
     </tbody>
   </table>
 </div>
+<script>
+  window.stocklist = <?php echo json_encode($wsml['products']); ?>;
+</script>

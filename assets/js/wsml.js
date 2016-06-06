@@ -56,6 +56,49 @@
     
   };
   
+    
+  var debounce = function(func, wait, immediate) {
+      var timeout;
+      return function() {
+          var context = this, args = arguments;
+          var later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+          };
+          var callNow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(context, args);
+      };
+  };
+  
+  var searchProducts = debounce(function() {
+    var val = $(this).val().toUpperCase(), tv, m;
+    var i=0; max = window.stocklist.length;
+    var matches = [];
+    
+    for (i;i<max;i++) {
+      tv = "!@#!@#!-" + window.stocklist[i].post.post_title.toUpperCase() + " " + window.stocklist[i].sku.toUpperCase();
+      m = tv.indexOf(val);
+      if ( m > 0 ) {
+        //Match.
+        matches.push(window.stocklist[i].id);
+      }
+    }
+    
+    if ( matches.length < 1 ) {
+      //Show tablle.
+      $("#stock-table tbody tr").show();
+      return true;
+    }
+    
+    $("#stock-table tbody tr").hide();
+    for ( var i=0; i<matches.length; i++ ) {
+      $("tr[data-id=" + matches[i] + "]").show();
+    }
+    
+  }, 250);
+  
   var checkIdle = function() {
    
     var now = Math.round(new Date().getTime()/1000);
@@ -65,10 +108,14 @@
     }
     
   }
+
   
   $(document).ready(function(){
     
     $('[data-ajax-update]').on('change', updateAjaxData);
+    $('[data-filter=stock]').on('keyup', searchProducts);
+    $('[data-filter=stock]').on('change', searchProducts);
+    $('[data-filter=stock]').on('blur', searchProducts);
 	
     //Prevent sign outs.
     window.setInterval(checkIdle,60000); //Once per minute.
